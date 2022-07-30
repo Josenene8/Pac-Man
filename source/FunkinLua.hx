@@ -56,7 +56,7 @@ class FunkinLua {
 
 	public var accessedProps:Map<String, Dynamic> = null;
 	public function new(script:String) {
-		#if LUA_ALLOWED
+		#if MODS_ALLOWED
 		lua = LuaL.newstate();
 		LuaL.openlibs(lua);
 		Lua.init_callbacks(lua);
