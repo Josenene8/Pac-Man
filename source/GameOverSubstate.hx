@@ -108,9 +108,9 @@ class GameOverSubstate extends MusicBeatSubstate
 			FlxG.sound.music.stop();
 			PlayState.deathCounter = 0;
 			PlayState.seenCutscene = false;
-			stopVid = true;
+			
 			if (PlayState.curSong == "freebase")
-				curVideo.stopVideo();
+				
 
 			if (PlayState.isStoryMode)
 				MusicBeatState.switchState(new StoryMenuState());
@@ -195,18 +195,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		#end
 	}
 
-	function newVideo(name:String):Void
-		{
-			var fileName:String = name;
-			if (!stopVid)
-				{
-					curVideo = new FlxVideo(fileName);
-					curVideo.finishCallback = function() {
-						newVideo(fileName);
-					}
-				}
-		}
-
+	
 	function endBullshit():Void
 	{
 		if (!isEnding)
@@ -216,7 +205,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				boyfriend.playAnim('deathConfirm', true);
 			stopVid = true;
 			if (PlayState.curSong == "freebase")
-				curVideo.stopVideo();
+				
 			FlxG.sound.music.stop();
 			FlxG.sound.play(Paths.music(endSoundName));
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
