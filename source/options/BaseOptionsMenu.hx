@@ -123,6 +123,9 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		changeSelection();
 		reloadCheckboxes();
+		#if android
+		addVirtualPad(LEFT_FULL, A_B);
+		#end
 	}
 
 	public function addOption(option:Option) {
@@ -145,7 +148,13 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		}
 
 		if (controls.BACK) {
-			close();
+			#if android
+                flixel.addons.transition.FlxTransitionableState.skipNextTransOut = true;
+
+		FlxG.resetState();
+                #else
+                close();
+                #end
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}
 
