@@ -1,0 +1,2 @@
+basically these files run the mod building command (you can check inside of them to make sure they only execute the build commands)
+WARNING, once the game crashes/closes this also closes the cmd console, using  them for debugging is not advised
