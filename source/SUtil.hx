@@ -57,30 +57,8 @@ class SUtil
 			if (!FileSystem.exists(SUtil.getPath()))
 				FileSystem.createDirectory(SUtil.getPath());
 
-			if (!FileSystem.exists(SUtil.getPath() + 'assets/') && !FileSystem.exists(SUtil.getPath() + 'mods/'))
-			{
-				SUtil.applicationAlert('Error!', "Whoops, seems like you didn't extract the files from the .APK!\nPlease watch the tutorial by pressing OK.");
-				FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
-				System.exit(1);
-			}
-			else
-			{
-				if (!FileSystem.exists(SUtil.getPath() + 'assets/'))
-				{
-					SUtil.applicationAlert('Error!',
-						"Whoops, seems like you didn't extract the assets/assets folder from the .APK!\nPlease watch the tutorial by pressing OK.");
-					FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
-					System.exit(1);
-				}
-
-				if (!FileSystem.exists(SUtil.getPath() + 'mods/'))
-				{
-					SUtil.applicationAlert('Error!',
-						"Whoops, seems like you didn't extract the assets/mods folder from the .APK!\nPlease watch the tutorial by pressing OK.");
-					FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
-					System.exit(1);
-				}
-			}
+			if (!FileSystem.exists(SUtil.getPath() + 'assets'))
+				FileSystem.createDirectory(SUtil.getPath() + 'assets');
 		}
 		#end
 	}
@@ -128,7 +106,14 @@ class SUtil
 				if (!FileSystem.exists(SUtil.getPath() + 'crash/'))
 					FileSystem.createDirectory(SUtil.getPath() + 'crash/');
 
-				File.saveContent(SUtil.getPath() + 'crash/' + Application.current.meta.get('file') + '_' + FlxStringUtil.formatTime(Sys.time(), true) + '.log', errMsg + "\n");
+				File.saveContent(SUtil.getPath()
+					+ 'crash/'
+					+ Application.current.meta.get('file')
+					+ '_'
+					+ FlxStringUtil.formatTime(Sys.time(), true)
+					+ '.log',
+					errMsg
+					+ "\n");
 			}
 			catch (e:Dynamic)
 				SUtil.applicationAlert('Error!', "Clouldn't save the crash dump because: " + e);
