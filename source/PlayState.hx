@@ -945,7 +945,7 @@ class PlayState extends MusicBeatState
 		// startCountdown();
 
 		generateSong(SONG.song);
-		#if LUA_ALLOWED
+		#if MODS_ALLOWED
 		for (notetype in noteTypeMap.keys())
 		{
 			var luaToLoad:String = Paths.modFolders('custom_notetypes/' + notetype + '.lua');
@@ -1058,7 +1058,8 @@ class PlayState extends MusicBeatState
 		botplayTxt.borderSize = 1.25;
 		botplayTxt.visible = cpuControlled;
 		add(botplayTxt);
-	creditTxt = new FlxText(876, 648, 348);
+	
+	var creditTxt = new FlxText(876, 648, 348);
        creditTxt.text = "PORTED BY\nFNF BR";
        creditTxt.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
        creditTxt.scrollFactor.set();
@@ -1339,7 +1340,7 @@ class PlayState extends MusicBeatState
 
 	function startCharacterLua(name:String)
 	{
-		#if LUA_ALLOWED
+		#if MODS_ALLOWED
 		var doPush:Bool = false;
 		var luaFile:String = 'characters/' + name + '.lua';
 		if(FileSystem.exists(Paths.modFolders(luaFile))) {
