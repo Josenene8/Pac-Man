@@ -46,6 +46,17 @@ class FlxVideo extends FlxBasic {
 		});
 		netStream.play(name);
 
+		#elseif android
+
+		VideoView.playVideo(AndroidTools.getFileUrl(name));
+		VideoView.onCompletion = function()
+		{
+		  if (finishCallback != null)
+		  {
+		    finishCallback();
+		  }
+		}
+
 		#elseif desktop
 		// by Polybius, check out PolyEngine! https://github.com/polybiusproxy/PolyEngine
 
