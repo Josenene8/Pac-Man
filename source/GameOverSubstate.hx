@@ -182,9 +182,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 
 		if(foundFile) {
-			curVideo = new FlxVideo(fileName);
-			curVideo.finishCallback = function() {
-				newVideo(fileName);
+			
 			}
 			return;
 		}
