@@ -57,8 +57,30 @@ class SUtil
 			if (!FileSystem.exists(SUtil.getPath()))
 				FileSystem.createDirectory(SUtil.getPath());
 
-			if (!FileSystem.exists(SUtil.getPath() + 'assets'))
-				FileSystem.createDirectory(SUtil.getPath() + 'assets');
+			if (!FileSystem.exists(SUtil.getPath() + 'assets/') && !FileSystem.exists(SUtil.getPath() + 'mods/'))
+			{
+				SUtil.applicationAlert('Error!', "Whoops, seems like you didn't extract the files from the .APK!\nPlease watch the tutorial by pressing OK.");
+				FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
+				System.exit(1);
+			}
+			else
+			{
+				if (!FileSystem.exists(SUtil.getPath() + 'assets/'))
+				{
+					SUtil.applicationAlert('Error!',
+						"Whoops, seems like you didn't extract the assets/assets folder from the .APK!\nPlease watch the tutorial by pressing OK.");
+					FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
+					System.exit(1);
+				}
+
+				if (!FileSystem.exists(SUtil.getPath() + 'mods/'))
+				{
+					SUtil.applicationAlert('Error!',
+						"Whoops, seems like you didn't extract the assets/mods folder from the .APK!\nPlease watch the tutorial by pressing OK.");
+					FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
+					System.exit(1);
+				}
+			}
 		}
 		#end
 	}
@@ -110,7 +132,7 @@ class SUtil
 					+ 'crash/'
 					+ Application.current.meta.get('file')
 					+ '_'
-					+ FlxStringUtil.formatTime(Sys.time(), true)
+					+ FlxStringUtil.formatTime(Date.now().getTime(), true)
 					+ '.log',
 					errMsg
 					+ "\n");
