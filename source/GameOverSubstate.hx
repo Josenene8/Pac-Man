@@ -65,7 +65,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 			}
 		else
-			startVideo('gameover_retry');
+			
 
 		FlxG.sound.play(Paths.sound(deathSoundName));
 		Conductor.changeBPM(100);
