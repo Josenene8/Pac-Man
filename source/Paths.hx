@@ -208,7 +208,7 @@ class Paths
 	
 	inline static public function soundRandom(key:String, min:Int, max:Int, ?library:String)
 	{
-		return sound(key + FlxG.random.int(min, max), library);
+		return SUtil.getPath() + sound(key + FlxG.random.int(min, max), library);
 	}
 
 	inline static public function music(key:String, ?library:String):Sound
