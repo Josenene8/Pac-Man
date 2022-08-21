@@ -2,7 +2,7 @@ package;
 
 #if android
 import android.Permissions;
-import android.PermissionsList;
+
 import android.os.Build.VERSION;
 import android.os.Environment;
 #end
